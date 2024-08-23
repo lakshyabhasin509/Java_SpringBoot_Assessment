@@ -1,0 +1,7 @@
+transformation:
+  rules:
+    outfield1: "concat(field1,field2)"
+    outfield2: "refdata1"
+    outfield3: "concat(refdata2,refdata3)"
+    outfield4: "multiply(field4,max(field5,refdata4))"
+    outfield5: "max(field5,refdata4)"
