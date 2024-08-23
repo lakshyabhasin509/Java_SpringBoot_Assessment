@@ -77,7 +77,6 @@ public class    TransformationService {
 
         // Implement additional logic to handle mathematical operations like max, multiply, etc.
         expression = expression.replace("multiply(field4,max(field5,refdata4))", multiply(inputData.getField4(),(max(inputData.getField5(), referenceData.getRefdata4()))));
-
         expression = expression.replace("max(field5,refdata4)", max(inputData.getField5(), referenceData.getRefdata4()).toString());
 
         logger.debug("Evaluated expression result: {}", expression);
@@ -101,4 +100,6 @@ public class    TransformationService {
 //            throw new RuntimeException("Error evaluating expression: " + expression, e);
 //        }
 //    }
+
+//    we can use xml file to define the transformation rules and then use libraries to perform that operations..
 }

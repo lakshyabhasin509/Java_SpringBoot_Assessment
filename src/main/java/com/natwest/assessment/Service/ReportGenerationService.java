@@ -8,6 +8,8 @@ import com.natwest.assessment.Models.Reference;
 import com.natwest.assessment.Service.FileIngestionService;
 import com.natwest.assessment.Service.TransformationService;
 import com.natwest.assessment.Utils.FileWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ import java.util.stream.Stream;
 @Service
 public class ReportGenerationService {
 
+
+    private static final Logger logger= LoggerFactory.getLogger(ReportGenerationService.class);
     @Autowired
     private FileIngestionService fileIngestionService;
 
@@ -33,7 +37,7 @@ public class ReportGenerationService {
     public void generateReport(String inputFilePath, String inputType, String referenceFilePath, String referenceType, String outputFilePath, String outputType) throws IOException {
 
 
-        System.out.println(inputFilePath);
+        logger.info("Report Generation Started");
 
         File inputFile = new File(inputFilePath);
         File referenceFile = new File(referenceFilePath);
@@ -47,7 +51,7 @@ public class ReportGenerationService {
         List<Output> outputDataList = transformationService.transformData(inputDataStream, referenceDataMap);
 
 
-        System.out.println(Arrays.toString(outputDataList.toArray()));
+
         fileWriters.writeFile(outputFile, outputDataList);
     }
 }

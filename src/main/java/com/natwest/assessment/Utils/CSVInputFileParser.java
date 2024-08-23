@@ -21,7 +21,7 @@ public class CSVInputFileParser implements FileParser<Input> {
         return StreamSupport.stream(parser.spliterator(), false)
                 .map(this::parseRecordToInputData);
     }
-    private Input parseRecordToInputData(CSVRecord record) {
+    public Input parseRecordToInputData(CSVRecord record) {
         return new Input(
                 record.get("field1"),
                 record.get("field2"),
